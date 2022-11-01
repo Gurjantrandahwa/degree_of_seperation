@@ -6,13 +6,28 @@
     margin: auto;
     justify-content: center;
     padding-top: 100px;
-
+    gap: 50px;
+    position: fixed;
+    width: 100%;
 }
 
 
 .names-wrapper {
-    width: 35%;
+    width: 40%;
+    height: 85vh;
+    overflow-y: auto;
+}
 
+.main-name {
+    color: #02150e;
+}
+
+.friends-names {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+    margin-top: 10px;
 }
 
 .names-wrapper button {
@@ -23,12 +38,9 @@
     padding: 5px 15px !important;
     font-size: 16px !important;
     text-transform: none !important;
+    font-weight: 600;
 }
 
-/*.names {*/
-/*    display: flex;*/
-/*    gap: 10px;*/
-/*}*/
 
 .connections > div {
     margin-top: 20px;
@@ -58,6 +70,7 @@
     padding: 10px !important;
     font-size: 16px !important;
     text-transform: none !important;
+    font-weight: 600;
 }
 
 .avatar-wrapper {
@@ -67,5 +80,21 @@
 }
 
 .css-8h65ya-MuiAvatar-root {
+
+}
+
+::-webkit-scrollbar {
+    width: 20px;
+}
+
+
+::-webkit-scrollbar-track {
+
+    background-color: black;
+}
+
+
+::-webkit-scrollbar-thumb {
+    background: #f4b206;
 
 }

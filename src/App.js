@@ -1,52 +1,36 @@
 import './App.css';
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {
     Box,
-    Button, Dialog, DialogActions, DialogContent, DialogContentText,
-    FormControl,
-    MenuItem,
-    Select,
-    InputLabel,
-    TextField, Avatar
+    Button,
+    TextField, Avatar, Typography,
 } from "@mui/material";
 
 
 function App() {
-    const [name, setName] = useState('');
-    const [nameValue1, setNameValue1] = useState('')
-    const [open, setOpen] = useState(false);
+    const [filterName, setFilterName] = useState([])
+    const [NameValue, setNameValue] = useState('')
 
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
-
-    const handleClose = () => {
-        setOpen(false);
-    }
-
-    const handleChange = (event) => {
-        setName(event.target.value);
-    };
-
-
-    let connections = [
-        {
-            "name": "sameer",
-            "friends": ["aayushi", "kamalnath"]
-        },
-        {
-            "name": "aayushi",
-            "friends": ["bhaskar"]
-        },
-        {
-            "name": "kamalnath",
-            "friends": ["shanti"]
-        },
-        {
-            "name": "shanti",
-            "friends": ["bhaskar"]
-        }
-    ]
+    const [connections, setConnections] = useState(
+        [
+            {
+                name: "sameer",
+                friends: ["aayushi", "kamalnath"]
+            },
+            {
+                name: "aayushi",
+                friends: ["bhaskar"]
+            },
+            {
+                name: "kamalnath",
+                friends: ["shanti"]
+            },
+            {
+                name: "shanti",
+                friends: ["bhaskar"]
+            }
+        ]
+    )
 
     function connectionsListToGraph(connections) {
         const graph = {}
@@ -78,56 +62,93 @@ function App() {
         return connectionPaths;
     }
 
-    console.log('Sameer to Bhaskar:', getConnections('sameer', 'bhaskar', connections))
-    console.log('Kamalnath to Bhaskar:', getConnections('kamalnath', 'bhaskar', connections))
+    useEffect(() => {
+        if (NameValue) {
+            const keyword = NameValue;
+            if (keyword !== NameValue) {
+                const results = connections.filter((user) => {
+                    return user.friends.toLowerCase().includes(keyword.toLowerCase());
+                });
+                setFilterName(results)
+            } else {
+                setFilterName([]);
+            }
+        }
+    }, [NameValue])
 
     return <div className={"wrapper"}>
         <div className={"names-wrapper"}>
+            {
+                connections.map((value, index) => {
+                    return <Box key={index}
+                                sx={{
+                                    maxWidth: 300,
+                                    borderRadius: "10px",
+                                    border: "2px solid black",
+                                    padding: "20px",
+                                    margin: "20px"
+                                }}>
 
-            <h3>Names</h3>
-            <Box sx={{maxWidth: 250}}>
-                <FormControl fullWidth>
+                        <Typography variant={"h5"} className={"main-name"}>
+                            {value.name}
+                        </Typography>
 
-                    <InputLabel>Name</InputLabel>
-                    <Select
-                        value={name}
-                        label="Name"
-                        onChange={handleChange}
-                    >
-                        <MenuItem value={"sameer"}>sameer</MenuItem>
-                        <MenuItem value={"aayushi"}>aayushi</MenuItem>
-                        <MenuItem value={"kamalnath"}>kamalnath</MenuItem>
-                        <MenuItem value={"shanti"}>shanti</MenuItem>
-                    </Select>
-                </FormControl>
-                <Button
-                    variant="outlined"
-                    onClick={handleClickOpen}>
-                    Add Name
-                </Button>
-                <Dialog
-                    open={open}
-                    onClose={handleClose}
+                        <div className={"friends-names"}>
+                            {value.friends.map((value1, index1) => {
+                                return <Box
+                                    key={index1}
+                                    sx={{
+                                        p: 1,
+                                        bgcolor: "purple",
+                                        color: "white",
+                                        borderRadius: "5px",
 
-                >
+                                    }}>
 
-                    <DialogContent>
-                        <DialogContentText>
-                            <TextField
+                                    <Typography>
+                                        {value1}
+                                    </Typography>
+                                </Box>
+                            })}
+                        </div>
+                        <TextField
+                            variant={"outlined"}
+                            type={"search"}
+                            value={NameValue}
+                            onChange={(event => {
+                                setNameValue(event.target.value)
+                            })}
+                        />
 
-                                type={"text"}
-                                variant={"outlined"}/>
-                        </DialogContentText>
-                    </DialogContent>
-                    <DialogActions>
-                        <Button onClick={handleClose}>
-                            Add Name
-                        </Button>
+                        {filterName.map((value3, index3) => {
+                            return <div key={index3}>
+                                <Typography variant={"h5"}>
+                                    {value3.friends}
+                                </Typography>
+                                <Button
+                                    onClick={() => {
+                                        setConnections([
+                                            ...connections,
+                                            {
+                                                ...value3,
 
-                    </DialogActions>
-                </Dialog>
+                                            }
+                                        ])
+                                        setFilterName([])
+                                        setNameValue("")
+                                    }}
+                                >
+                                    Add Name
+                                </Button>
 
-            </Box>
+                            </div>
+
+                        })}
+                    </Box>
+                })
+            }
+
+
         </div>
         <div className={"connections"}>
 
