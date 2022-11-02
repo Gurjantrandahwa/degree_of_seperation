@@ -1,21 +1,23 @@
 .wrapper {
     display: flex;
     background: rgb(245, 129, 129);
-    background: linear-gradient(135deg, rgba(245, 129, 129, 1) 6%, rgba(213, 118, 200, 1) 100%);
+    background: linear-gradient(105deg, rgba(245, 129, 129, 1) 6%, rgba(213, 118, 200, 1) 100%);
     height: 100vh;
     margin: auto;
     justify-content: center;
     padding-top: 40px;
-    gap: 50px;
+    gap: 100px;
     position: fixed;
     width: 100%;
 }
 
+/*Names*/
 
 .names-wrapper {
-    width: 40%;
+    width: 50%;
     height: 85vh;
     overflow-y: auto;
+    padding-left: 30px;
 }
 
 .main-name {
@@ -38,58 +40,64 @@
     padding: 5px 15px !important;
     font-size: 16px !important;
     text-transform: none !important;
-    font-weight: 600;
+    font-weight: 500;
+    border-radius: 6px;
+
+}
+.add-people-btn{
+    width: 48%;
+    margin-left: 20px!important;
+    padding: 10px!important;
 }
 
 
-.connections > div {
-    margin-top: 20px;
-}
+
+/*Connections*/
+
 
 .connections {
-
+width: 50%;
 }
-
+.connections > form>div {
+    margin-top: 25px;
+}
 .connections input {
-    padding: 25px !important;
+    padding: 20px !important;
     width: 300px;
 
 }
 
-.connections label {
-    color: black !important;
-    font-size: 18px;
-}
+
 
 .connections button {
     margin-top: 20px;
     background-color: black !important;
     color: #f4b206 !important;
     border: none !important;
-    width: 100%;
+    width: 47%;
     padding: 10px !important;
     font-size: 16px !important;
     text-transform: none !important;
     font-weight: 600;
 }
 
+
 .avatar-wrapper {
     display: flex;
     margin-top: 40px;
-    gap: 30px;
+    gap: 20px;
 }
 
-.css-8h65ya-MuiAvatar-root {
 
-}
 
+
+/*scrollbar*/
 ::-webkit-scrollbar {
     width: 20px;
 }
 
 
 ::-webkit-scrollbar-track {
-
     background-color: black;
 }
 
