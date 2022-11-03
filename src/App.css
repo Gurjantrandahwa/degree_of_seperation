@@ -1,20 +1,19 @@
 .wrapper {
-    display: flex;
+
+}
+.main-wrapper{
     background: rgb(245, 129, 129);
     background: linear-gradient(105deg, rgba(245, 129, 129, 1) 6%, rgba(213, 118, 200, 1) 100%);
-    height: 100vh;
-    margin: auto;
-    justify-content: center;
-    padding-top: 40px;
-    gap: 100px;
-    position: fixed;
-    width: 100%;
 }
+.sub-wrapper{
+    display: flex;
 
-/*Names*/
+    height: 100vh;
+}
+/Names/
 
 .names-wrapper {
-    width: 50%;
+    flex: 1;
     height: 85vh;
     overflow-y: auto;
     padding-left: 30px;
@@ -52,11 +51,12 @@
 
 
 
-/*Connections*/
+/Connections/
 
 
 .connections {
-width: 50%;
+    flex: 1;
+    padding: 20px;
 }
 .connections > form>div {
     margin-top: 25px;
@@ -91,7 +91,7 @@ width: 50%;
 
 
 
-/*scrollbar*/
+/scrollbar/
 ::-webkit-scrollbar {
     width: 20px;
 }
