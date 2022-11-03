@@ -62,7 +62,6 @@ function App() {
         return connectionPaths;
     }
 
-
     console.log('sammer TO Bhaskar:', getConnections('sameer', 'bhaskar', connections))
     console.log('Kamalnath to Bhaskar:', getConnections('kamalnath', 'bhaskar', connections))
     return <div className={"wrapper"}>
@@ -160,9 +159,8 @@ function App() {
         </div>
         <div className={"connections"}>
             <form onSubmit={(e) => {
-
                 e.preventDefault()
-
+                
             }
             }>
                 <div>
@@ -190,12 +188,12 @@ function App() {
             <div className={"avatar-wrapper"}>
 
                 <Avatar
-                        sx={{
-                            bgcolor: "purple",
-                            color: "white",
+                    sx={{
+                        bgcolor: "purple",
+                        color: "white",
 
 
-                        }}> </Avatar>
+                    }}> </Avatar>
             </div>
         </div>
     </div>
